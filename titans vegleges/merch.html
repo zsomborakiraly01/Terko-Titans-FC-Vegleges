@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch Shop (27) - Térkő Titánok FC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigáció -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-titan sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="img/terko_titanok_logo.png" alt="Térkő Titánok FC Címer" width="42" height="42" class="me-2 rounded-circle border border-white">
+                TÉRKŐ TITÁNOK FC
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigáció váltó">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i>Főoldal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eredmenyek.html"><i class="bi bi-trophy me-1"></i>Eredmények &amp; Keret</a></li>
+                    <li class="nav-item"><a class="nav-link" href="meccs-kovetes.html"><i class="bi bi-broadcast me-1"></i>Élő Meccskövetés</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="merch.html"><i class="bi bi-shop me-1"></i>Merch Shop (27)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jelentkezes.html"><i class="bi bi-person-plus me-1"></i>Toborzás</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kapcsolat.html"><i class="bi bi-envelope me-1"></i>Kapcsolat</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn btn-cart-nav btn-sm px-3 py-2 position-relative" data-bs-toggle="modal" data-bs-target="#cartModal" title="Kosár megtekintése">
+                            <i class="bi bi-cart-fill me-1"></i> Kosár
+                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tartalom -->
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-success mb-2"><i class="bi bi-shop me-2"></i>Hivatalos Térkő Titánok Merch Shop</h2>
+            <p class="lead text-muted">Mind a 27 hivatalos klubtermékünk játékosaink által bemutatva! Vásárolj közvetlenül a csapatot támogatva.</p>
+        </div>
+
+        <!-- ===== Ruházat & Viselet (9 termék) ===== -->
+        <section class="mb-5">
+            <h3 class="fw-bold text-dark border-bottom border-success border-3 pb-2 mb-4">
+                <i class="bi bi-person-standing text-success me-2"></i>Ruházat & Viselet
+            </h3>
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/ultra_mez.png" class="card-img-top rounded img-fluid transition-zoom" alt="Hivatalos Ultra Mez 2026">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #10 Bugdán Brájen</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Hivatalos Ultra Mez 2026</h5>
+                            <p class="text-muted small mb-2">Zöld-Fehér Csíkos Ballon d'Or Edition Mez</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">18.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Hivatalos Ultra Mez 2026', '18.990 Ft', 'img/merch/ultra_mez.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/nadrag.png" class="card-img-top rounded img-fluid transition-zoom" alt="Mérkőzés Nadrág">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #04 Völgyi Richárd</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Mérkőzés Nadrág</h5>
+                            <p class="text-muted small mb-2">Mocsárzöld Mérkőzés Nadrág Fehér Csíkkal</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">6.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Mérkőzés Nadrág', '6.990 Ft', 'img/merch/nadrag.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/zokni.png" class="card-img-top rounded img-fluid transition-zoom" alt="Pro Meccszokni">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #31 Kandács Romano</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Pro Meccszokni</h5>
+                            <p class="text-muted small mb-2">Légáteresztő Sportzokni Titán Logóval</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">1.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Pro Meccszokni', '1.990 Ft', 'img/merch/zokni.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/melegito.png" class="card-img-top rounded img-fluid transition-zoom" alt="Hivatalos Csapat Melegítő">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #23 Ifj. Horváth Zsolt Zoltán</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Hivatalos Csapat Melegítő</h5>
+                            <p class="text-muted small mb-2">Czipzáras Melegítő Felső és Alsó</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">19.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Hivatalos Csapat Melegítő', '19.990 Ft', 'img/merch/melegito.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/szel_dzseki.png" class="card-img-top rounded img-fluid transition-zoom" alt="Eső- és Széldzseki">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #19 Kalányos Róbert</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Eső- és Széldzseki</h5>
+                            <p class="text-muted small mb-2">Vízhatlan Széldzseki Kapucnival</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">14.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Eső- és Széldzseki', '14.990 Ft', 'img/merch/szel_dzseki.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/alsogatya.png" class="card-img-top rounded img-fluid transition-zoom" alt="Sport Boxer (2 db-os)">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #08 Rostás Aladin Dániel</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Sport Boxer (2 db-os)</h5>
+                            <p class="text-muted small mb-2">Kényelmes Pamut Sport Boxer</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">3.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Sport Boxer (2 db-os)', '3.990 Ft', 'img/merch/alsogatya.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/baseball_sapka.png" class="card-img-top rounded img-fluid transition-zoom" alt="Titáns Snapback Sapka">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #07 Török Kevin</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Titáns Snapback Sapka</h5>
+                            <p class="text-muted small mb-2">Hímzett Zöld Snapback Sapka</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">5.490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Titáns Snapback Sapka', '5.490 Ft', 'img/merch/baseball_sapka.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/nyakkendo.png" class="card-img-top rounded img-fluid transition-zoom" alt="Barbershop Elegant Nyakkendő">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #03 Junior Krisztián Krisztopher</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Barbershop Elegant Nyakkendő</h5>
+                            <p class="text-muted small mb-2">Elegáns Zöld Selyem Nyakkendő</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">4.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Barbershop Elegant Nyakkendő', '4.990 Ft', 'img/merch/nyakkendo.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/ov.png" class="card-img-top rounded img-fluid transition-zoom" alt="Bőr Nadrágszíj">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #76 Dandár Ferenc Robika</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Bőr Nadrágszíj</h5>
+                            <p class="text-muted small mb-2">Valódi Bőr Nadrágszíj Titán Csatolással</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">4.490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Bőr Nadrágszíj', '4.490 Ft', 'img/merch/ov.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Sport & Edzés (9 termék) ===== -->
+        <section class="mb-5">
+            <h3 class="fw-bold text-dark border-bottom border-success border-3 pb-2 mb-4">
+                <i class="bi bi-dribbble text-success me-2"></i>Sport & Edzés
+            </h3>
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/cipo.png" class="card-img-top rounded img-fluid transition-zoom" alt="Titán Stoplis Cipő">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #99 Ambubu Kumalu</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Titán Stoplis Cipő</h5>
+                            <p class="text-muted small mb-2">Fűre Tervezett Pro Stoplis Focicipő</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">24.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Titán Stoplis Cipő', '24.990 Ft', 'img/merch/cipo.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/labda.png" class="card-img-top rounded img-fluid transition-zoom" alt="Hivatalos Meccslabda FIFA Pro">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #10 Bugdán Brájen</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Hivatalos Meccslabda FIFA Pro</h5>
+                            <p class="text-muted small mb-2">Hivatalos 5-ös Méretű Pro Meccslabda</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">12.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Hivatalos Meccslabda FIFA Pro', '12.990 Ft', 'img/merch/labda.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/sip.png" class="card-img-top rounded img-fluid transition-zoom" alt="Bírói Fém Síp">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #02 Burkus Máté</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Bírói Fém Síp</h5>
+                            <p class="text-muted small mb-2">Krómozott Fém Síp Zöld Nyakpánttal</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">2.490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Bírói Fém Síp', '2.490 Ft', 'img/merch/sip.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/kulacs.png" class="card-img-top rounded img-fluid transition-zoom" alt="Sport Kulacs 750ml">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #54 Babay Krisztofer</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Sport Kulacs 750ml</h5>
+                            <p class="text-muted small mb-2">BPA Mentes Sportkulacs DENSO Logóval</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">3.490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Sport Kulacs 750ml', '3.490 Ft', 'img/merch/kulacs.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/torolkozo.png" class="card-img-top rounded img-fluid transition-zoom" alt="Mikroszálas Edzőtörölköző">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #01 Szabó Ádám</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Mikroszálas Edzőtörölköző</h5>
+                            <p class="text-muted small mb-2">Gyorsan Száradó Nagy Edzőtörölköző</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">4.490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Mikroszálas Edzőtörölköző', '4.490 Ft', 'img/merch/torolkozo.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/tornazsak.png" class="card-img-top rounded img-fluid transition-zoom" alt="Vízhatlan Tornazsák">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #87 Bordás Zorall Dzsézön</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Vízhatlan Tornazsák</h5>
+                            <p class="text-muted small mb-2">Strandra és Edzésre Ideális Tornazsák</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">3.290 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Vízhatlan Tornazsák', '3.290 Ft', 'img/merch/tornazsak.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/papucs.png" class="card-img-top rounded img-fluid transition-zoom" alt="Öltözői Megyei Papucs">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #44 Hamburger István</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Öltözői Megyei Papucs</h5>
+                            <p class="text-muted small mb-2">Kényelmes Öltözői Csapatpapucs</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">3.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Öltözői Megyei Papucs', '3.990 Ft', 'img/merch/papucs.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/energiaital.png" class="card-img-top rounded img-fluid transition-zoom" alt="Titán Power Energiaital 250ml">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #45 JohnDeer Julio Emánuel</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Titán Power Energiaital 250ml</h5>
+                            <p class="text-muted small mb-2">Tutti-Frutti Ízű Csapat Energiaital</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Titán Power Energiaital 250ml', '490 Ft', 'img/merch/energiaital.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/evoeszkoz.png" class="card-img-top rounded img-fluid transition-zoom" alt="Kemping Evőeszköz Készlet">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #22 Somogyi Patrik</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Kemping Evőeszköz Készlet</h5>
+                            <p class="text-muted small mb-2">Rozsdamentes Fém Evőeszköz Tokkal</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">2.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Kemping Evőeszköz Készlet', '2.990 Ft', 'img/merch/evoeszkoz.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Szurkolói Kiegészítők (6 termék) ===== -->
+        <section class="mb-5">
+            <h3 class="fw-bold text-dark border-bottom border-success border-3 pb-2 mb-4">
+                <i class="bi bi-heart-fill text-success me-2"></i>Szurkolói Kiegészítők
+            </h3>
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/kulcstarto.png" class="card-img-top rounded img-fluid transition-zoom" alt="Titán Prémium Kulcstartó">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #01 Szőke Dávid</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Titán Prémium Kulcstartó</h5>
+                            <p class="text-muted small mb-2">Fém Kulcstartó Klubcímerrel</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">1.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Titán Prémium Kulcstartó', '1.990 Ft', 'img/merch/kulcstarto.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/kituzo.png" class="card-img-top rounded img-fluid transition-zoom" alt="Fém Zománcozott Kitűző">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #05 Bíró Zsombor</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Fém Zománcozott Kitűző</h5>
+                            <p class="text-muted small mb-2">Pajzs Alakú Prémium Kitűző</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">1.290 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Fém Zománcozott Kitűző', '1.290 Ft', 'img/merch/kituzo.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/sal.png" class="card-img-top rounded img-fluid transition-zoom" alt="Kötött Szurkolói Sál">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #02 Burkus Máté</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Kötött Szurkolói Sál</h5>
+                            <p class="text-muted small mb-2">Kétoldalas Kötött Sál 'HAJRÁ TITÁN!'</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">4.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Kötött Szurkolói Sál', '4.990 Ft', 'img/merch/sal.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/bogre.png" class="card-img-top rounded img-fluid transition-zoom" alt="Kerámia Szurkolói Bögre">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #01 Szőke Dávid</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Kerámia Szurkolói Bögre</h5>
+                            <p class="text-muted small mb-2">330ml Kerámia Bögre Klubcímerrel</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">2.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Kerámia Szurkolói Bögre', '2.990 Ft', 'img/merch/bogre.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/sornyito.png" class="card-img-top rounded img-fluid transition-zoom" alt="Mágneses Sörnyitó">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #05 Bíró Zsombor</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Mágneses Sörnyitó</h5>
+                            <p class="text-muted small mb-2">Hűtőmágneses Fém Sörnyitó</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">1.490 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Mágneses Sörnyitó', '1.490 Ft', 'img/merch/sornyito.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/tolltarto.png" class="card-img-top rounded img-fluid transition-zoom" alt="Diák Tolltartó">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #11 Sárközi Nicolaus</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Diák Tolltartó</h5>
+                            <p class="text-muted small mb-2">Czipzáras Tolltartó Iskolásoknak</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">2.290 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Diák Tolltartó', '2.290 Ft', 'img/merch/tolltarto.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Prémium Különlegességek (3 termék) ===== -->
+        <section class="mb-5">
+            <h3 class="fw-bold text-dark border-bottom border-success border-3 pb-2 mb-4">
+                <i class="bi bi-stars text-success me-2"></i>Prémium Különlegességek
+            </h3>
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/felni.png" class="card-img-top rounded img-fluid transition-zoom" alt="DENSO x Titánok Alufelni 18&quot;">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #06 Dányi Dominik</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">DENSO x Titánok Alufelni 18&quot;</h5>
+                            <p class="text-muted small mb-2">Exkluzív Alufelni Zöld Díszcsíkkal</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">89.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('DENSO x Titánok Alufelni 18&quot;', '89.990 Ft', 'img/merch/felni.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/elektromos_roller.png" class="card-img-top rounded img-fluid transition-zoom" alt="Titán E-Scooter 350W">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #12 Kalányos Márkinhos</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Titán E-Scooter 350W</h5>
+                            <p class="text-muted small mb-2">350W-os Elektromos Roller Titán Zöldben</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">129.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Titán E-Scooter 350W', '129.990 Ft', 'img/merch/elektromos_roller.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card titan-card h-100 p-3 d-flex flex-column justify-content-between shadow-sm">
+                        <div>
+                            <div class="position-relative overflow-hidden rounded mb-3">
+                                <img src="img/merch/kontroller.png" class="card-img-top rounded img-fluid transition-zoom" alt="Titánok Edition PS5 Kontroller">
+                                <span class="position-absolute top-0 end-0 bg-dark text-warning badge m-2 p-2 border border-warning">Modell: #06 Dányi Dominik</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Titánok Edition PS5 Kontroller</h5>
+                            <p class="text-muted small mb-2">Egyedi Zöld-Fehér Wireless Kontroller</p>
+                        </div>
+                        <div class="pt-3 border-top mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Fogyasztói ár:</span>
+                                <h4 class="fw-bold text-success mb-0">29.990 Ft</h4>
+                            </div>
+                            <button onclick="addToCart('Titánok Edition PS5 Kontroller', '29.990 Ft', 'img/merch/kontroller.png')" class="btn btn-titan-primary w-100">
+                                <i class="bi bi-cart-plus me-1"></i> Kosárba
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lábléc -->
+    <footer class="bg-dark text-white py-5 mt-5 border-top border-4 border-success">
+        <div class="container text-center">
+            <div class="row g-4 justify-content-center align-items-center">
+                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-shield-shield me-2"></i>TÉRKŐ TITÁNOK FC</h5>
+                    <p class="small text-light mb-1">Alapítva: 2026 | Otthonunk: Hajdúböszörmény (Titans Aréna - Táltos utca)</p>
+                    <p class="small text-muted fst-italic mb-0">"Fiatal pulyaktól az öreg ráklokig várjuk a footballozni szerető igazi gadzsókat!"</p>
+                </div>
+                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-star-fill me-2"></i>Hivatalos Támogatóink</h5>
+                    <p class="small text-light mb-2"><strong>DENSO</strong> &amp; <strong>Gino &amp; Lorenzo Barbershop</strong></p>
+                    <div class="d-flex justify-content-center gap-3 fs-5">
+                        <a href="#" class="text-white text-decoration-none" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white text-decoration-none" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white text-decoration-none" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-white text-decoration-none" title="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center border-top border-secondary pt-3 mt-3">
+                    <p class="small text-muted mb-0">&copy; 2026 Térkő Titánok FC. Minden jog fenntartva. | HTML5 &amp; Bootstrap 5.3 Keretrendszer</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Kosár Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white border-bottom border-success border-3">
+                    <h5 class="modal-title fw-bold" id="cartModalLabel">
+                        <i class="bi bi-cart-check-fill text-success me-2"></i>Kosarad Tartalma
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Bezárás"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="cart-empty-message" class="text-center py-4">
+                        <i class="bi bi-cart-x display-1 text-muted"></i>
+                        <p class="lead mt-3 text-muted">A kosarad jelenleg üres.</p>
+                        <a href="merch.html" class="btn btn-titan-primary mt-2" data-bs-dismiss="modal">Irány a Merch Shop!</a>
+                    </div>
+                    <div id="cart-items-container" class="d-none">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Termék</th>
+                                        <th>Egységár</th>
+                                        <th>Mennyiség</th>
+                                        <th>Összesen</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-table-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <h5 class="fw-bold mb-0">Végösszeg: <span id="cart-total-price" class="text-success fw-extrabold">0 Ft</span></h5>
+                            <div>
+                                <button onclick="clearCart()" class="btn btn-outline-danger me-2"><i class="bi bi-trash me-1"></i>Kosár Ürítése</button>
+                                <button onclick="checkoutCart()" class="btn btn-titan-primary"><i class="bi bi-credit-card me-1"></i>Megrendelés</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

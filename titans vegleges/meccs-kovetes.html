@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élő Meccskövetés - Térkő Titánok FC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Navigáció -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-titan sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="img/terko_titanok_logo.png" alt="Térkő Titánok FC Címer" width="42" height="42" class="me-2 rounded-circle border border-white">
+                TÉRKŐ TITÁNOK FC
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigáció váltó">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    
+                    <li class="nav-item"><a class="nav-link " href="index.html"><i class="bi bi-house-door me-1"></i>Főoldal</a></li>
+                    <li class="nav-item"><a class="nav-link " href="eredmenyek.html"><i class="bi bi-trophy me-1"></i>Eredmények & Keret</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="meccs-kovetes.html"><i class="bi bi-broadcast me-1"></i>Élő Meccskövetés</a></li>
+                    <li class="nav-item"><a class="nav-link " href="merch.html"><i class="bi bi-shop me-1"></i>Merch Shop (27)</a></li>
+                    <li class="nav-item"><a class="nav-link " href="jelentkezes.html"><i class="bi bi-person-plus me-1"></i>Toborzás</a></li>
+                    <li class="nav-item"><a class="nav-link " href="kapcsolat.html"><i class="bi bi-envelope me-1"></i>Kapcsolat</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn btn-cart-nav btn-sm px-3 py-2 position-relative" data-bs-toggle="modal" data-bs-target="#cartModal" title="Kosár megtekintése">
+                            <i class="bi bi-cart-fill me-1"></i> Kosár
+                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container py-5 text-center">
+        <span class="badge bg-danger mb-3 px-3 py-2 text-uppercase fs-6 shadow"><i class="bi bi-record-fill me-1"></i> Élő Mérkőzés</span>
+        <h2 class="fw-bold mb-4">Hajdúböszörményi Megyei Bajnokság</h2>
+
+        <!-- Élő Eredménytábla -->
+        <div class="bg-dark text-white p-4 p-md-5 rounded-4 shadow-lg mb-5 border border-success border-3">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <h3 class="fw-bold text-success mb-0">TÉRKŐ TITÁNOK FC</h3>
+                    <small class="text-light">Titans Aréna (Hazai)</small>
+                </div>
+                <div class="col-md-2 my-3 my-md-0">
+                    <h1 class="display-3 fw-bold text-warning mb-0">2 - 1</h1>
+                    <div id="live-match-timer" class="badge bg-success fs-6 mt-2">67'</div>
+                </div>
+                <div class="col-md-5">
+                    <h3 class="fw-bold text-secondary mb-0">Beton Vándorok SE</h3>
+                    <small class="text-light">Vendég</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Percek és események -->
+        <div class="text-start card titan-card p-4 shadow-sm max-w-700 mx-auto">
+            <h4 class="fw-bold border-bottom pb-2 mb-3"><i class="bi bi-chat-left-text-fill me-2 text-success"></i>Események Perccel Percre</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent"><strong>62' ⚽ GÓÓÓL!</strong> Bugdán Brájen (#10) visszalépett a Hamis 9-es pozícióból, kiugratta Ambubu Kumalut (#99), aki a léc alá bombázott! (2-1)</li>
+                <li class="list-group-item bg-transparent"><strong>44' ⚽ GÓÓÓL!</strong> Bugdán Brájen mesteri emeléssel egyenlít! (1-1)</li>
+                <li class="list-group-item bg-transparent"><strong>28' 🟨 Sárga lap:</strong> Babay Krisztofer (#54) kemény belépőért kapta.</li>
+                <li class="list-group-item bg-transparent"><strong>12' ⚽ Gól:</strong> Beton Vándorok SE szerzi az első gólt szöglet után. (0-1)</li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <!-- Lábléc -->
+    <footer class="bg-dark text-white py-5 mt-5 border-top border-4 border-success">
+        <div class="container text-center">
+            <div class="row g-4 justify-content-center align-items-center">
+                <!-- Bal oldali mező (col-md-6) -->
+                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-shield-shield me-2"></i>TÉRKŐ TITÁNOK FC</h5>
+                    <p class="small text-light mb-1">Alapítva: 2026 | Otthonunk: Hajdúböszörmény (Titans Aréna - Táltos utca)</p>
+                    <p class="small text-muted fst-italic mb-0">"Fiatal pulyaktól az öreg ráklokig várjuk a footballozni szerető igazi gadzsókat!"</p>
+                </div>
+                
+                <!-- Jobb oldali mező (col-md-6) -->
+                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-star-fill me-2"></i>Hivatalos Támogatóink</h5>
+                    <p class="small text-light mb-2"><strong>DENSO</strong> & <strong>Gino & Lorenzo Barbershop</strong></p>
+                    <div class="d-flex justify-content-center gap-3 fs-5">
+                        <a href="#" class="text-white text-decoration-none" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white text-decoration-none" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white text-decoration-none" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-white text-decoration-none" title="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Alsó sáv (col-md-12) -->
+                <div class="col-md-12 text-center border-top border-secondary pt-3 mt-3">
+                    <p class="small text-muted mb-0">&copy; 2026 Térkő Titánok FC. Minden jog fenntartva. | HTML5 & Bootstrap 5.3 Keretrendszer</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Kosár Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white border-bottom border-success border-3">
+                    <h5 class="modal-title fw-bold" id="cartModalLabel">
+                        <i class="bi bi-cart-check-fill text-success me-2"></i>Kosarad Tartalma
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Bezárás"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="cart-empty-message" class="text-center py-4">
+                        <i class="bi bi-cart-x display-1 text-muted"></i>
+                        <p class="lead mt-3 text-muted">A kosarad jelenleg üres.</p>
+                        <a href="merch.html" class="btn btn-titan-primary mt-2" data-bs-dismiss="modal">Irány a Merch Shop!</a>
+                    </div>
+                    <div id="cart-items-container" class="d-none">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Termék</th>
+                                        <th>Egységár</th>
+                                        <th>Mennyiség</th>
+                                        <th>Összesen</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <h5 class="fw-bold mb-0">Végösszeg: <span id="cart-total-price" class="text-success fw-extrabold">0 Ft</span></h5>
+                            <div>
+                                <button onclick="clearCart()" class="btn btn-outline-danger me-2"><i class="bi bi-trash me-1"></i>Kosár Ürítése</button>
+                                <button onclick="checkoutCart()" class="btn btn-titan-primary"><i class="bi bi-credit-card me-1"></i>Megrendelés</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

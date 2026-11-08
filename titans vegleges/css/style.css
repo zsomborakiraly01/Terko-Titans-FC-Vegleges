@@ -1,0 +1,120 @@
+:root {
+    --primary-green: #1e4d2b;
+    --swamp-green: #14281a;
+    --accent-green: #2d6a4f;
+    --light-grey: #f4f6f4;
+    --dark-grey: #212529;
+    --hover-grey: #343a40;
+    --pure-white: #ffffff;
+    --gold-accent: #e9c46a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigáció és Animált Hover */
+.navbar-titan {
+    background-color: var(--swamp-green) !important;
+    border-bottom: 3px solid var(--accent-green);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-titan .nav-link {
+    color: var(--pure-white) !important;
+    font-weight: 600;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar-titan .nav-link:hover, 
+.navbar-titan .nav-link.active {
+    background-color: var(--hover-grey);
+    color: var(--gold-accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn-cart-nav {
+    background-color: var(--accent-green);
+    color: white;
+    border: 1px solid var(--gold-accent);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-cart-nav:hover {
+    background-color: var(--gold-accent);
+    color: var(--swamp-green);
+    transform: scale(1.05);
+}
+
+/* Gombok és Interaktivitás */
+.btn-titan-primary {
+    background-color: var(--primary-green);
+    color: var(--pure-white);
+    border: 2px solid var(--primary-green);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-titan-primary:hover {
+    background-color: var(--swamp-green);
+    color: var(--pure-white);
+    border-color: var(--swamp-green);
+    transform: scale(1.03);
+}
+
+.btn-titan-outline {
+    background-color: transparent;
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-titan-outline:hover {
+    background-color: var(--accent-green);
+    color: var(--pure-white);
+    transform: scale(1.03);
+}
+
+/* Kártya Hover Animációk */
+.titan-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.titan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(20, 40, 26, 0.18);
+}
+
+.transition-zoom {
+    transition: transform 0.4s ease;
+}
+
+.titan-card:hover .transition-zoom {
+    transform: scale(1.04);
+}
+
+/* Hero Section */
+.hero-header {
+    background: linear-gradient(135deg, rgba(20, 40, 26, 0.88) 0%, rgba(30, 77, 43, 0.88) 100%), url('../img/terko_titanok_hero.png') center/cover no-repeat;
+    color: white;
+    padding: 75px 0;
+    border-bottom: 4px solid var(--accent-green);
+}
+
+.max-w-700 {
+    max-width: 700px;
+}
