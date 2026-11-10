@@ -5,13 +5,33 @@
     'use strict';
 
     /* ---------- Űrlapok ----------
-     * Használat: <form data-demo-form data-success-title="..." data-success-text="..." novalidate>
-     * A böngészős validációt Bootstrap-stílusban mutatjuk.
-     * A beküldés DEMÓ (nincs szerver). Valódi backendhez hallgasd a `tt:form-submit`
-     * eseményt:  document.addEventListener('tt:form-submit', e => fetch('/api', {method:'POST', body:e.detail.data}))
+     * <form data-demo-form data-email-subject="..." data-success-title="..." data-success-text="..." novalidate>
+     * Beküldéskor a mezők (címkéikkel) e-mailben a TT_CONFIG.notifyEmail címre mennek (lásd js/config.js).
      */
     document.querySelectorAll('form[data-demo-form]').forEach((form) => {
         const status = (form.parentElement || document).querySelector('[data-form-status]');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const btnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+        const show = (type, title, text) => {
+            if (!status) return;
+            status.innerHTML = '<div class="alert alert-' + type + '" role="alert"><strong></strong><span class="d-block"></span></div>';
+            status.querySelector('strong').textContent = title;
+            status.querySelector('span').textContent = text || '';
+            status.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        };
+
+        // A levél mezőit az űrlap címkéiből építjük (pl. "Telefonszám": "+36 ...").
+        const collect = () => {
+            const fields = {};
+            form.querySelectorAll('input, select, textarea').forEach((el) => {
+                if (!el.name || el.name === '_honey') return;
+                const label = el.id ? form.querySelector('label[for="' + el.id + '"]') : null;
+                const key = (label ? label.textContent : el.name).trim();
+                fields[key] = el.value.trim() || '-';
+            });
+            return fields;
+        };
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -21,20 +41,24 @@
                 if (firstInvalid) firstInvalid.focus();
                 return;
             }
-            document.dispatchEvent(new CustomEvent('tt:form-submit', {
-                detail: { form: form, data: new FormData(form) },
-            }));
-            form.reset();
-            form.classList.remove('was-validated');
-            if (status) {
-                status.innerHTML =
-                    '<div class="alert alert-success d-flex gap-2 align-items-start" role="alert">' +
-                    '<i class="bi bi-check-circle-fill" aria-hidden="true"></i><div><strong></strong><span class="d-block"></span></div></div>';
-                // textContent: a szöveg a HTML attribútumból jön, nem szúrjuk be nyersen.
-                status.querySelector('strong').textContent = form.dataset.successTitle || 'Köszönjük!';
-                status.querySelector('span').textContent = form.dataset.successText || '';
-                status.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            }
+            if (form.elements._honey && form.elements._honey.value) return; // spam-robot csapda
+
+            const emailField = form.querySelector('input[type="email"]');
+            const fields = collect();
+            fields['Beküldés ideje'] = new Date().toLocaleString('hu-HU');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Küldés…';
+            if (status) status.innerHTML = '';
+
+            TT.sendEmail(form.dataset.emailSubject || 'Új üzenet – Térkő Titánok FC', fields, emailField && emailField.value)
+                .then(() => {
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    show('success', form.dataset.successTitle || 'Köszönjük!', form.dataset.successText);
+                })
+                .catch((err) => show('danger', 'A küldés nem sikerült.', err.userMessage || 'Kérjük, próbáld újra pár perc múlva, vagy hívj minket a Kapcsolat oldalon megadott számon.'))
+                .finally(() => { submitBtn.disabled = false; submitBtn.innerHTML = btnHTML; });
         });
     });
 

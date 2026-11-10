@@ -25,6 +25,60 @@
     /** 4990 -> "4 990 Ft" (a hu-HU locale 4 számjegynél nem csoportosít, ezért kézzel formázunk) */
     const formatPrice = (n) => String(Math.round(Number(n))).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') + '\u00a0Ft';
 
+    /* ---------- Spam-védelem (kliens oldali rétegek) ----------
+     * A küldés előtt minden e-mail ezen a szűrőn megy át. Beállítások: SPAM. */
+    const SPAM = {
+        minPageSeconds: 4,      // robotok azonnal küldenek; ember ennél tovább tölti ki
+        minGapMs: 30000,        // két küldés között legalább ennyi idő
+        maxPerHour: 5,          // böngészőnként óránként ennyi levél
+        maxLinks: 2,            // ennél több hivatkozás = spam
+        maxFieldLength: 2000,   // mezőnkénti karakterkorlát
+    };
+    const PAGE_LOADED = Date.now();
+    const LOG_KEY = 'tt_send_log';
+    const userError = (message) => Object.assign(new Error(message), { userMessage: message });
+
+    function readLog(now) {
+        try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]').filter((t) => now - t < 3600000); }
+        catch (e) { return []; }
+    }
+
+    function spamGuard(fields) {
+        const now = Date.now();
+        if (now - PAGE_LOADED < SPAM.minPageSeconds * 1000) throw userError('Kérjük, várj néhány másodpercet a küldés előtt.');
+        const log = readLog(now);
+        if (log.length && now - log[log.length - 1] < SPAM.minGapMs) throw userError('Túl gyorsan küldesz. Próbáld újra fél perc múlva.');
+        if (log.length >= SPAM.maxPerHour) throw userError('Elérted az óránkénti küldési korlátot. Próbáld újra később.');
+        const text = Object.keys(fields).map((k) => fields[k]).join(' ');
+        if ((text.match(/https?:\/\/|www\./gi) || []).length > SPAM.maxLinks) throw userError('Az üzenet túl sok hivatkozást tartalmaz, ezért nem küldhető el.');
+        log.push(now);
+        try { localStorage.setItem(LOG_KEY, JSON.stringify(log)); } catch (e) { /* privát mód */ }
+    }
+
+    /**
+     * E-mail küldése a FormSubmit-en keresztül (lásd js/config.js).
+     * fields: { 'Címke': 'érték', ... } – a levélben táblázatként jelenik meg.
+     * Hibánál elutasít; a spam-szűrő hibáinak van `userMessage` mezője (megjeleníthető a látogatónak).
+     */
+    function sendEmail(subject, fields, replyTo) {
+        const clean = {};
+        Object.keys(fields).forEach((k) => { clean[k] = String(fields[k]).slice(0, SPAM.maxFieldLength); });
+        try { spamGuard(clean); } catch (err) { return Promise.reject(err); }
+
+        const body = Object.assign({ _subject: subject, _template: 'table', _captcha: 'false' }, clean);
+        if (replyTo) body._replyto = String(replyTo).slice(0, 200);
+        return fetch(global.TT_CONFIG.endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(body),
+        }).then((res) => res.json().catch(() => ({})).then((data) => {
+            if (!res.ok || data.success === false || data.success === 'false') {
+                throw new Error(data.message || 'A küldés nem sikerült.');
+            }
+            return data;
+        }));
+    }
+
     function toast(message, options) {
         const opts = options || {};
         const host = document.getElementById('toast-host');
@@ -112,6 +166,27 @@
             '<div class="fw-bold">Végösszeg: <span id="cart-total-price" class="cart-total">0 Ft</span></div>' +
             '<div class="d-flex gap-2"><button type="button" class="btn btn-outline-danger" data-cart-action="clear"><i class="bi bi-trash me-1" aria-hidden="true"></i>Ürítés</button>' +
             '<button type="button" class="btn btn-titan-primary" data-cart-action="checkout"><i class="bi bi-credit-card me-1" aria-hidden="true"></i>Megrendelés</button></div></div></div>' +
+            '<div data-cart-view="checkout" hidden>' +
+            '<h3 class="h5 fw-bold mb-3"><i class="bi bi-truck me-2 text-success" aria-hidden="true"></i>Szállítási és elérhetőségi adatok</h3>' +
+            '<div id="checkout-summary" class="callout small mb-3"></div>' +
+            '<div id="checkout-status" aria-live="polite"></div>' +
+            '<form id="checkout-form" novalidate>' +
+            '<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">' +
+            '<div class="row g-3">' +
+            '<div class="col-12"><label class="form-label" for="c-name">Teljes név</label><input id="c-name" name="name" class="form-control" required autocomplete="name"><div class="invalid-feedback">Add meg a neved.</div></div>' +
+            '<div class="col-md-6"><label class="form-label" for="c-phone">Telefonszám</label><input id="c-phone" name="phone" type="tel" class="form-control" required autocomplete="tel" inputmode="tel" pattern="\\+?[0-9 \\-]{7,20}" placeholder="+36 30 123 4567"><div class="invalid-feedback">Adj meg érvényes telefonszámot.</div></div>' +
+            '<div class="col-md-6"><label class="form-label" for="c-email">E-mail cím</label><input id="c-email" name="email" type="email" class="form-control" required autocomplete="email"><div class="invalid-feedback">Adj meg érvényes e-mail címet.</div></div>' +
+            '<div class="col-12"><label class="form-label" for="c-delivery">Átvétel módja</label><select id="c-delivery" name="delivery" class="form-select"><option value="courier">Futárszolgálat (1–2 munkanap)</option><option value="pickup">Személyes átvétel – Titans Aréna, Táltos utca</option></select></div>' +
+            '<div class="col-12 row g-3 m-0 p-0" data-address-fields>' +
+            '<div class="col-md-4"><label class="form-label" for="c-zip">Irányítószám</label><input id="c-zip" name="zip" class="form-control" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{4}" placeholder="4220"><div class="invalid-feedback">4 számjegyű irányítószám.</div></div>' +
+            '<div class="col-md-8"><label class="form-label" for="c-city">Település</label><input id="c-city" name="city" class="form-control" required autocomplete="address-level2"><div class="invalid-feedback">Add meg a települést.</div></div>' +
+            '<div class="col-12"><label class="form-label" for="c-street">Utca, házszám, emelet/ajtó</label><input id="c-street" name="street" class="form-control" required autocomplete="street-address"><div class="invalid-feedback">Add meg a szállítási címet.</div></div></div>' +
+            '<div class="col-12"><label class="form-label" for="c-note">Megjegyzés (méret, futárnak szóló infó stb.)</label><textarea id="c-note" name="note" class="form-control" rows="2"></textarea></div>' +
+            '</div>' +
+            '<div class="d-flex flex-wrap gap-2 justify-content-between mt-4">' +
+            '<button type="button" class="btn btn-outline-secondary" data-cart-action="back"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Vissza a kosárhoz</button>' +
+            '<button type="submit" class="btn btn-titan-primary" id="checkout-submit"><i class="bi bi-send-check me-1" aria-hidden="true"></i>Megrendelés elküldése</button></div>' +
+            '</form></div>' +
             '<div data-cart-view="success" class="text-center py-4" hidden><i class="bi bi-check-circle-fill display-1 text-success" aria-hidden="true"></i>' +
             '<h3 class="mt-3 fw-bold">Köszönjük a megrendelést!</h3>' +
             '<p class="text-muted mb-3">A Térkő Titánok FC merch csapata hamarosan feldolgozza a vásárlásodat.</p>' +
@@ -129,6 +204,6 @@
         if (footer) footer.outerHTML = footerHTML() + cartModalHTML();
     }
 
-    global.TT = { NAV_ITEMS, esc, formatPrice, toast };
+    global.TT = { NAV_ITEMS, esc, formatPrice, toast, sendEmail };
     mountLayout();
 })(window);

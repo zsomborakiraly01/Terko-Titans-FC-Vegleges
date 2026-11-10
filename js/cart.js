@@ -13,7 +13,7 @@
 
     const STORAGE_KEY = 'terko_cart_v2';
     const MAX_QTY = 99;
-    const { esc, formatPrice, toast } = global.TT;
+    const { esc, formatPrice, toast, sendEmail } = global.TT;
 
     const findProduct = (id) => PRODUCTS_DATA.find((p) => p.id === id);
     const clampQty = (q) => Math.max(0, Math.min(MAX_QTY, Math.floor(Number(q)) || 0));
@@ -82,12 +82,11 @@
         const list = document.getElementById('cart-lines');
         if (!list) return;
 
-        if (lines.length === 0) {
-            // A sikeres megrendelés nézetet nem írjuk felül.
-            const success = document.querySelector('[data-cart-view="success"]');
-            if (!success || success.hidden) setView('empty');
-            return;
-        }
+        const current = document.querySelector('[data-cart-view]:not([hidden])');
+        const cur = current ? current.dataset.cartView : '';
+        if (cur === 'checkout' || cur === 'success') return; // ezeket a nézeteket nem írjuk felül
+
+        if (lines.length === 0) { setView('empty'); return; }
         setView('items');
         list.innerHTML = lines.map((l) => {
             const p = findProduct(l.id);
@@ -122,13 +121,78 @@
         if (el && global.bootstrap) bootstrap.Modal.getOrCreateInstance(el).show();
     }
 
-    function checkout() {
+    /* ---------- Megrendelés: adatbekérés + e-mail ---------- */
+    const byId = (id) => document.getElementById(id);
+
+    function openCheckout() {
         if (lines.length === 0) return;
-        // DEMÓ: itt nincs szerver. Valódi rendelésnél a `lines` tömböt kell elküldeni a backendnek.
-        lines = [];
-        save();
-        setView('success');
-        render();
+        byId('checkout-summary').innerHTML =
+            lines.map((l) => esc(findProduct(l.id).title) + ' × ' + l.qty).join('<br>') +
+            '<div class="fw-bold mt-2">Végösszeg: ' + formatPrice(total()) + '</div>';
+        byId('checkout-status').innerHTML = '';
+        setView('checkout');
+        syncDelivery();
+    }
+
+    // Személyes átvételnél nem kell szállítási cím.
+    function syncDelivery() {
+        const pickup = byId('c-delivery').value === 'pickup';
+        const box = document.querySelector('[data-address-fields]');
+        box.hidden = pickup;
+        box.querySelectorAll('input').forEach((i) => { i.required = !pickup; });
+    }
+
+    function orderSummaryText() {
+        return lines.map((l) => {
+            const p = findProduct(l.id);
+            return p.title + ' (' + p.id + ') × ' + l.qty + ' = ' + formatPrice(p.price * l.qty);
+        }).join(' | ');
+    }
+
+    function submitOrder(form) {
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            const bad = form.querySelector(':invalid');
+            if (bad) bad.focus();
+            return;
+        }
+        if (form.elements._honey && form.elements._honey.value) return; // spam-robot csapda
+        const v = (n) => form.elements[n].value.trim();
+        const pickup = v('delivery') === 'pickup';
+        const btn = byId('checkout-submit');
+        const status = byId('checkout-status');
+        const fields = {
+            'Termékek': orderSummaryText(),
+            'Végösszeg': formatPrice(total()),
+            'Név': v('name'),
+            'Telefonszám': v('phone'),
+            'E-mail': v('email'),
+            'Átvétel módja': pickup ? 'Személyes átvétel (Titans Aréna)' : 'Futárszolgálat',
+            'Szállítási cím': pickup ? '-' : v('zip') + ' ' + v('city') + ', ' + v('street'),
+            'Megjegyzés': v('note') || '-',
+            'Rendelés ideje': new Date().toLocaleString('hu-HU'),
+        };
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Küldés…';
+        status.innerHTML = '';
+
+        sendEmail('Új rendelés – Térkő Titánok FC Merch (' + formatPrice(total()) + ')', fields, v('email'))
+            .then(() => {
+                lines = [];
+                save();
+                form.reset();
+                form.classList.remove('was-validated');
+                setView('success');
+                render();
+            })
+            .catch((err) => {
+                status.innerHTML = '<div class="alert alert-danger" role="alert"></div>';
+                status.firstChild.textContent = err.userMessage || 'A rendelést nem sikerült elküldeni. A kosarad megmaradt – kérjük, próbáld újra, vagy írj nekünk a Kapcsolat oldalon.';
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-send-check me-1" aria-hidden="true"></i>Megrendelés elküldése';
+            });
     }
 
     /* ---------- Eseménykezelés (delegálva, nincs inline onclick) ---------- */
@@ -148,15 +212,20 @@
             case 'dec': if (line) setQty(id, line.qty - 1); break;
             case 'remove': remove(id); break;
             case 'clear': if (confirm('Biztosan üríteni szeretnéd a kosarat?')) clear(); break;
-            case 'checkout': checkout(); break;
+            case 'checkout': openCheckout(); break;
+            case 'back': setView('items'); render(); break;
         }
     });
+
+    document.addEventListener('submit', (e) => {
+        if (e.target.id === 'checkout-form') { e.preventDefault(); submitOrder(e.target); }
+    });
+    document.addEventListener('change', (e) => { if (e.target.id === 'c-delivery') syncDelivery(); });
 
     // Ha a modal újranyílik, ne a "köszönjük" nézet maradjon ott.
     document.addEventListener('show.bs.modal', (e) => {
         if (e.target.id !== 'cartModal') return;
-        const success = document.querySelector('[data-cart-view="success"]');
-        if (success) success.hidden = true;
+        setView(lines.length ? 'items' : 'empty');
         render();
     });
 

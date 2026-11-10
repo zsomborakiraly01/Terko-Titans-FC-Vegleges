@@ -39,19 +39,23 @@ Egy helyen kell átírni, minden oldalon megjelenik. Új oldalnál a `<body data
 **Színek:** `css/style.css` elején a `:root` tokenek (`--tt-green-*`, `--tt-gold`).
 A Bootstrap `success` színe is erre van átállítva, ezért a `.text-success`, `.bg-success` stb. klubzöld.
 
-**Űrlapok valódi küldése:** az űrlapok jelenleg demók. Hallgasd a `tt:form-submit` eseményt:
-
-```js
-document.addEventListener('tt:form-submit', (e) => {
-  fetch('/api/contact', { method: 'POST', body: e.detail.data });
-});
-```
-
-**Megrendelés:** a `Cart.checkout` (js/cart.js) most csak kiüríti a kosarat és köszönő nézetet mutat.
-Valódi rendeléshez a `lines` tömböt kell a backendnek küldeni.
+**E-mail értesítések:** a rendelések, a toborzó űrlap és a kapcsolat űrlap e-mailben a
+`js/config.js` → `formId` (FormSubmit alias) által megadott címre mennek a FormSubmit.co szolgáltatáson keresztül (nincs saját szerver).
+Az első beküldés után a FormSubmit egy megerősítő levelet küld erre a címre – egyszer jóvá kell hagyni,
+addig a levelek nem érkeznek meg. Az e-mail cím látszik az oldal forrásában (spamgyűjtők célpontja);
+a megerősítés után a FormSubmit ad egy véletlen alias-azonosítót, ezt érdemes a címe helyett használni.
+Új űrlapnál: `<form data-demo-form data-email-subject="..." novalidate>` – a mezők a címkéikkel kerülnek a levélbe.
 
 ## Ismert, szándékosan nem módosított tartalmi pontok
 
 - Az „Ambubu Kumalu” a főoldalon és a keretben rövidítve szerepel (korábban az egyik helyen „Ambubu Butan Kumalu” volt) – egyeztessétek a hivatalos írásmódot.
 - Az élő meccs adatai (2–1, 67. perc) statikusak, az óra csak szimulál.
 - A közösségi média linkek még `#`-re mutatnak; cseréld őket a valódi profilokra a `js/core.js`-ben.
+
+## Spam-védelem
+
+A `js/core.js` `SPAM` beállításai szűrik a küldéseket (rejtett csapdamező, minimális kitöltési idő,
+küldési korlát böngészőnként, hivatkozás- és hosszkorlát). Fontos: ez **kliens oldali** védelem – a
+böngésző kezelheti, de aki közvetlenül a FormSubmit címére küld kéréseket, azt nem állítja meg.
+Valódi védelemhez szerver oldalon ellenőrzött CAPTCHA kell (pl. Cloudflare Turnstile + Web3Forms,
+vagy egy Cloudflare Worker). A FormSubmit irányítópultján is lehet jelentett spamet tiltani.

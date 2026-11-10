@@ -35,8 +35,10 @@
                 <div data-form-status aria-live="polite"></div>
 
                 <form data-demo-form novalidate
+                      data-email-subject="Új jelentkezés – Térkő Titánok FC toborzás"
                       data-success-title="Köszönjük a jelentkezést!"
                       data-success-text="A Térkő Titánok vezetősége hamarosan keresni fog a megadott telefonszámon.">
+                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
                     <div class="mb-3">
                         <label class="form-label" for="j-name">Teljes név</label>
                         <input type="text" id="j-name" name="name" class="form-control" required autocomplete="name" placeholder="Pl. Kalányos Róbert">
@@ -93,6 +95,7 @@
     <noscript><p class="text-center p-3 mb-0 bg-warning-subtle">A menü, a kosár és a webshop működéséhez engedélyezd a JavaScriptet.</p></noscript>
 
     <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/products.js"></script>
     <script src="js/core.js"></script>
     <script src="js/cart.js"></script>
