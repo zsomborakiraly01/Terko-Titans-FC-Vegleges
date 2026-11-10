@@ -2,194 +2,142 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Főoldal - Térkő Titánok FC</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta name="description" content="A Térkő Titánok FC hajdúböszörményi amatőr futballklub hivatalos oldala: keret, élő meccskövetés, merch shop és toborzás.">
+    <meta name="theme-color" content="#14281a">
+    <meta property="og:title" content="Főoldal - Térkő Titánok FC">
+    <meta property="og:description" content="A Térkő Titánok FC hajdúböszörményi amatőr futballklub hivatalos oldala: keret, élő meccskövetés, merch shop és toborzás.">
+    <meta property="og:image" content="img/logo.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    
-    <!-- Navigáció -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-titan sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-                <img src="img/terko_titanok_logo.png" alt="Térkő Titánok FC Címer" width="42" height="42" class="me-2 rounded-circle border border-white">
-                TÉRKŐ TITÁNOK FC
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigáció váltó">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    
-                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="bi bi-house-door me-1"></i>Főoldal</a></li>
-                    <li class="nav-item"><a class="nav-link " href="eredmenyek.html"><i class="bi bi-trophy me-1"></i>Eredmények & Keret</a></li>
-                    <li class="nav-item"><a class="nav-link " href="meccs-kovetes.html"><i class="bi bi-broadcast me-1"></i>Élő Meccskövetés</a></li>
-                    <li class="nav-item"><a class="nav-link " href="merch.html"><i class="bi bi-shop me-1"></i>Merch Shop (27)</a></li>
-                    <li class="nav-item"><a class="nav-link " href="jelentkezes.html"><i class="bi bi-person-plus me-1"></i>Toborzás</a></li>
-                    <li class="nav-item"><a class="nav-link " href="kapcsolat.html"><i class="bi bi-envelope me-1"></i>Kapcsolat</a></li>
-                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-                        <button class="btn btn-cart-nav btn-sm px-3 py-2 position-relative" data-bs-toggle="modal" data-bs-target="#cartModal" title="Kosár megtekintése">
-                            <i class="bi bi-cart-fill me-1"></i> Kosár
-                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
-                        </button>
-                    </li>
-                </ul>
+<body data-page="home">
+    <a class="skip-link" href="#main">Ugrás a tartalomra</a>
+
+    <!-- A menüt a js/core.js tölti be (NAV_ITEMS) -->
+    <div id="site-header"></div>
+
+    <main id="main">
+        <header class="hero-header">
+            <div class="container">
+                <img src="img/logo.png" alt="Térkő Titánok FC címer" class="hero-logo mb-4" width="140" height="140">
+                <h1 class="display-4 mb-3">TÉRKŐ TITÁNOK FC</h1>
+                <p class="lead mb-4">A Hajdúk ereje, a modern technológia otthona – Hajdúböszörmény szentélye</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="jelentkezes.html" class="btn btn-titan-gold btn-lg"><i class="bi bi-pen me-2" aria-hidden="true"></i>Csatlakozz hozzánk!</a>
+                    <a href="merch.html" class="btn btn-titan-ghost-light btn-lg"><i class="bi bi-shop me-2" aria-hidden="true"></i>Merch kollekció (<span data-product-count>27</span>)</a>
+                </div>
             </div>
-        </div>
-    </nav>
-
-
-    <!-- Hero Section -->
-    <header class="hero-header text-center">
-        <div class="container py-4">
-            <img src="img/terko_titanok_logo.png" alt="Klubcímer" width="130" class="mb-3 drop-shadow rounded-circle border border-3 border-white">
-            <h1 class="display-3 fw-bold text-white mb-2">TÉRKŐ TITÁNOK FC</h1>
-            <p class="lead text-light mb-4">A Hajdúk Ereje, a Modern Technológia Otthona - Hajdúböszörmény Szentélye</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="jelentkezes.html" class="btn btn-titan-primary btn-lg"><i class="bi bi-pen me-2"></i>Csatlakozz Hozzánk!</a>
-                <a href="merch.html" class="btn btn-titan-outline text-white border-white btn-lg"><i class="bi bi-shop me-2"></i>Merch Kollekció (27)</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="container py-5">
-        <!-- Klub Céljai & Alapítók -->
-        <div class="row g-4 mb-5 align-items-stretch">
-            <div class="col-md-6">
-                <div class="card titan-card h-100 p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <h3 class="fw-bold text-success border-bottom pb-2"><i class="bi bi-heart-fill me-2"></i>A Klubról és Céljainkról</h3>
-                        <p>A Térkő Titánok FC elsődleges célja egy családias, összetartó közösség építése a sporton keresztül Hajdúböszörmény szívében. Nálunk közösen fejlődünk és nemes célokat érünk el!</p>
-                    </div>
-                    <div class="bg-light p-3 rounded border-start border-4 border-success mt-3">
-                        <h5 class="fw-bold text-dark mb-1">Klub Alapító Tagok (2026):</h5>
-                        <ul class="mb-0 text-muted">
-                            <li><strong>Szőke Dávid</strong></li>
-                            <li><strong>Burkus Máté</strong></li>
-                            <li><strong>Bíró Zsombor</strong></li>
-                            <li><strong>Dányi Dominik</strong></li>
-                        </ul>
+            <div class="hero-stats">
+                <div class="container">
+                    <div class="row text-center g-0">
+                        <div class="col-6 col-md-3 hero-stat"><div class="num">2026</div><div class="lbl">Alapítás éve</div></div>
+                        <div class="col-6 col-md-3 hero-stat"><div class="num">18</div><div class="lbl">Fős keret</div></div>
+                        <div class="col-6 col-md-3 hero-stat"><div class="num">4-3-3</div><div class="lbl">Hamis 9-es felállás</div></div>
+                        <div class="col-6 col-md-3 hero-stat"><div class="num" data-product-count>27</div><div class="lbl">Merch termék</div></div>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-6">
-                <div class="card titan-card h-100 p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <h3 class="fw-bold text-dark border-bottom pb-2"><i class="bi bi-diagram-3-fill me-2"></i>4-3-3 Hamis 9-es Stratégia</h3>
-                        <p>Játékosaink egy olyan taktikára alapoznak, melynek a megtévesztés a lényege: a centerünk (<strong>Bugdán Brájen #10</strong>, Ballon d'Or jelölt) a védősor és a középpálya közé visszalépve magával húzza az ellenfél belső védőjét, így nyitva folyosót a szélsőknek (<strong>Ambubu Kumalu #99</strong> és <strong>Török Kevin #07</strong>).</p>
-                    </div>
-                    <div class="mt-3">
-                        <a href="eredmenyek.html" class="btn btn-titan-outline w-100"><i class="bi bi-arrow-right-circle me-2"></i>Részletes Keret & Taktikai Tábla</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </header>
 
-        <!-- Szponzorok -->
-        <div class="bg-white p-5 rounded-4 shadow-sm text-center">
-            <h3 class="fw-bold text-success mb-4"><i class="bi bi-star-fill me-2"></i>Hivatalos Támogatóink</h3>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-5">
-                    <div class="p-4 border rounded-3 bg-light h-100">
-                        <h4 class="fw-bold text-dark">DENSO</h4>
-                        <p class="text-muted small mb-0">Biztosítja csapatunk számára a biztonságos és megbízható utazást a mérkőzésekre, tornákra és edzőtáborokba.</p>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="p-4 border rounded-3 bg-light h-100">
-                        <h4 class="fw-bold text-dark">Gino & Lorenzo Barbershop</h4>
-                        <p class="text-muted small mb-0">Gondoskodik játékosaink egységes, kifogástalan hajvágásáról és stílusos megjelenéséről a pályán kívül is.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    <!-- Lábléc -->
-    <footer class="bg-dark text-white py-5 mt-5 border-top border-4 border-success">
-        <div class="container text-center">
-            <div class="row g-4 justify-content-center align-items-center">
-                <!-- Bal oldali mező (col-md-6) -->
-                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
-                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-shield-shield me-2"></i>TÉRKŐ TITÁNOK FC</h5>
-                    <p class="small text-light mb-1">Alapítva: 2026 | Otthonunk: Hajdúböszörmény (Titans Aréna - Táltos utca)</p>
-                    <p class="small text-muted fst-italic mb-0">"Fiatal pulyaktól az öreg ráklokig várjuk a footballozni szerető igazi gadzsókat!"</p>
-                </div>
-                
-                <!-- Jobb oldali mező (col-md-6) -->
-                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
-                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-star-fill me-2"></i>Hivatalos Támogatóink</h5>
-                    <p class="small text-light mb-2"><strong>DENSO</strong> & <strong>Gino & Lorenzo Barbershop</strong></p>
-                    <div class="d-flex justify-content-center gap-3 fs-5">
-                        <a href="#" class="text-white text-decoration-none" title="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white text-decoration-none" title="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white text-decoration-none" title="YouTube"><i class="bi bi-youtube"></i></a>
-                        <a href="#" class="text-white text-decoration-none" title="TikTok"><i class="bi bi-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- Alsó sáv (col-md-12) -->
-                <div class="col-md-12 text-center border-top border-secondary pt-3 mt-3">
-                    <p class="small text-muted mb-0">&copy; 2026 Térkő Titánok FC. Minden jog fenntartva. | HTML5 & Bootstrap 5.3 Keretrendszer</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Kosár Modal -->
-    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-white border-bottom border-success border-3">
-                    <h5 class="modal-title fw-bold" id="cartModalLabel">
-                        <i class="bi bi-cart-check-fill text-success me-2"></i>Kosarad Tartalma
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Bezárás"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div id="cart-empty-message" class="text-center py-4">
-                        <i class="bi bi-cart-x display-1 text-muted"></i>
-                        <p class="lead mt-3 text-muted">A kosarad jelenleg üres.</p>
-                        <a href="merch.html" class="btn btn-titan-primary mt-2" data-bs-dismiss="modal">Irány a Merch Shop!</a>
-                    </div>
-                    <div id="cart-items-container" class="d-none">
-                        <div class="table-responsive">
-                            <table class="table align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Termék</th>
-                                        <th>Egységár</th>
-                                        <th>Mennyiség</th>
-                                        <th>Összesen</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cart-table-body">
-                                </tbody>
-                            </table>
+        <!-- Élő meccs ajánló -->
+        <section class="container" aria-label="Élő mérkőzés">
+            <a href="meccs-kovetes.html" class="d-block text-decoration-none">
+                <div class="titan-card hoverable p-3 p-md-4 mt-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="icon-badge text-danger bg-danger-subtle"><i class="bi bi-broadcast" aria-hidden="true"></i></span>
+                        <div>
+                            <div class="eyebrow mb-0"><span class="live-dot"></span>Élő mérkőzés</div>
+                            <div class="fw-bold text-dark">Térkő Titánok FC <span class="text-success">2 – 1</span> Beton Vándorok SE</div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
-                            <h5 class="fw-bold mb-0">Végösszeg: <span id="cart-total-price" class="text-success fw-extrabold">0 Ft</span></h5>
-                            <div>
-                                <button onclick="clearCart()" class="btn btn-outline-danger me-2"><i class="bi bi-trash me-1"></i>Kosár Ürítése</button>
-                                <button onclick="checkoutCart()" class="btn btn-titan-primary"><i class="bi bi-credit-card me-1"></i>Megrendelés</button>
+                    </div>
+                    <span class="btn btn-titan-outline btn-sm">Tovább a követéshez <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                </div>
+            </a>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-6">
+                        <div class="titan-card h-100 p-4 d-flex flex-column">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <span class="icon-badge"><i class="bi bi-heart-fill" aria-hidden="true"></i></span>
+                                <h2 class="h4 fw-bold mb-0">A klubról és céljainkról</h2>
+                            </div>
+                            <p>A Térkő Titánok FC elsődleges célja egy családias, összetartó közösség építése a sporton keresztül Hajdúböszörmény szívében. Nálunk közösen fejlődünk és nemes célokat érünk el!</p>
+                            <div class="callout mt-auto">
+                                <h3 class="h6 fw-bold mb-2">Klub alapító tagok (2026)</h3>
+                                <ul class="mb-0 text-muted ps-3">
+                                    <li><strong>Szőke Dávid</strong></li>
+                                    <li><strong>Burkus Máté</strong></li>
+                                    <li><strong>Bíró Zsombor</strong></li>
+                                    <li><strong>Dányi Dominik</strong></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="titan-card h-100 p-4 d-flex flex-column">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <span class="icon-badge"><i class="bi bi-diagram-3-fill" aria-hidden="true"></i></span>
+                                <h2 class="h4 fw-bold mb-0">4-3-3 Hamis 9-es stratégia</h2>
+                            </div>
+                            <p>Játékosaink egy olyan taktikára alapoznak, melynek a megtévesztés a lényege: a centerünk (<strong>Bugdán Brájen #10</strong>, Ballon d'Or jelölt) a védősor és a középpálya közé visszalépve magával húzza az ellenfél belső védőjét, így nyitva folyosót a szélsőknek (<strong>Ambubu Kumalu #99</strong> és <strong>Török Kevin #07</strong>).</p>
+                            <a href="eredmenyek.html" class="btn btn-titan-outline mt-auto"><i class="bi bi-arrow-right-circle me-2" aria-hidden="true"></i>Részletes keret és taktikai tábla</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
+        <section class="section pt-0" aria-labelledby="stars-title">
+            <div class="container">
+                <h2 class="section-title" id="stars-title"><i class="bi bi-stars text-gold me-2" aria-hidden="true"></i>A taktika kulcsemberei</h2>
+                <div class="row g-4">
+                    <div class="col-md-4"><div class="titan-card hoverable player-card h-100"><div class="player-number">#10</div><h3 class="h5 fw-bold mt-2 mb-1">Bugdán Brájen</h3><div class="role">Hamis kilences · Ballon d'Or jelölt</div></div></div>
+                    <div class="col-md-4"><div class="titan-card hoverable player-card h-100"><div class="player-number">#99</div><h3 class="h5 fw-bold mt-2 mb-1">Ambubu Kumalu</h3><div class="role">Jobbszélső</div></div></div>
+                    <div class="col-md-4"><div class="titan-card hoverable player-card h-100"><div class="player-number">#07</div><h3 class="h5 fw-bold mt-2 mb-1">Török Kevin</h3><div class="role">Balszélső</div></div></div>
+                </div>
+            </div>
+        </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+        <section class="section pt-0" aria-labelledby="featured-title">
+            <div class="container">
+                <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
+                    <h2 class="section-title mb-0" id="featured-title"><i class="bi bi-bag-heart-fill text-gold me-2" aria-hidden="true"></i>Kiemelt merch</h2>
+                    <a href="merch.html" class="fw-semibold text-decoration-none">Összes termék <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="row g-3 g-lg-4" id="featured-products" data-ids="ultra_mez,sal,baseball_sapka,kulacs"></div>
+            </div>
+        </section>
+
+        <section class="section pt-0" aria-labelledby="sponsors-title">
+            <div class="container">
+                <div class="titan-card p-4 p-md-5 text-center">
+                    <h2 class="section-title" id="sponsors-title"><i class="bi bi-star-fill text-gold me-2" aria-hidden="true"></i>Hivatalos támogatóink</h2>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-5"><div class="sponsor-box"><h3 class="h4 fw-bold">DENSO</h3><p class="text-muted small mb-0">Biztosítja csapatunk számára a biztonságos és megbízható utazást a mérkőzésekre, tornákra és edzőtáborokba.</p></div></div>
+                        <div class="col-md-5"><div class="sponsor-box"><h3 class="h4 fw-bold">Gino &amp; Lorenzo Barbershop</h3><p class="text-muted small mb-0">Gondoskodik játékosaink egységes, kifogástalan hajvágásáról és stílusos megjelenéséről a pályán kívül is.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- A láblécet és a kosár-ablakot a js/core.js tölti be -->
+    <div id="site-footer"></div>
+
+    <noscript><p class="text-center p-3 mb-0 bg-warning-subtle">A menü, a kosár és a webshop működéséhez engedélyezd a JavaScriptet.</p></noscript>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/shop.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

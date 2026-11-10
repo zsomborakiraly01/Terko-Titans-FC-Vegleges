@@ -1,120 +1,386 @@
+/* ==========================================================================
+   Térkő Titánok FC – stíluslap
+   Felépítés:
+   1. Design tokenek (színek, árnyékok) + Bootstrap felülírások
+   2. Alap elemek, akadálymentesség
+   3. Navigáció
+   4. Gombok
+   5. Hero + oldalfejlécek
+   6. Kártyák, szekciók
+   7. Pálya (taktikai tábla) + mérkőzés idővonal
+   8. Merch Shop (kártyák, szűrők, termékoldal)
+   9. Kosár
+  10. Űrlapok
+  11. Lábléc
+  12. Reszponzív finomítások, mozgáscsökkentés
+   ========================================================================== */
+
+/* 1. Tokenek ------------------------------------------------------------ */
 :root {
-    --primary-green: #1e4d2b;
-    --swamp-green: #14281a;
-    --accent-green: #2d6a4f;
-    --light-grey: #f4f6f4;
-    --dark-grey: #212529;
-    --hover-grey: #343a40;
-    --pure-white: #ffffff;
-    --gold-accent: #e9c46a;
+    --tt-green-900: #0d1c12;
+    --tt-green-800: #14281a;
+    --tt-green-700: #1e4d2b;
+    --tt-green-600: #2d6a4f;
+    --tt-green-300: #74c69d;
+    --tt-gold: #e9c46a;
+    --tt-gold-dark: #b8892b;
+    --tt-bg: #f3f6f3;
+    --tt-ink: #17211a;
+    --tt-muted: #5b6a60;
+    --tt-line: #dfe7e0;
+    --tt-radius: 16px;
+    --tt-shadow-sm: 0 2px 8px rgba(13, 28, 18, .07);
+    --tt-shadow-md: 0 10px 28px rgba(13, 28, 18, .13);
+
+    /* Bootstrap felülírások: így a .text-success, .bg-success, .btn-success
+       stb. automatikusan a klub zöldjét használja, !important nélkül. */
+    --bs-success: #1e4d2b;
+    --bs-success-rgb: 30, 77, 43;
+    --bs-warning: #e9c46a;
+    --bs-warning-rgb: 233, 196, 106;
+    --bs-body-bg: var(--tt-bg);
+    --bs-body-color: var(--tt-ink);
+    --bs-link-color: var(--tt-green-700);
+    --bs-link-hover-color: var(--tt-green-800);
+    --bs-border-radius-lg: var(--tt-radius);
+    --bs-border-color: var(--tt-line);
 }
 
+/* 2. Alap ---------------------------------------------------------------- */
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light-grey);
-    color: var(--dark-grey);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
+main { flex: 1 0 auto; }
 
-/* Navigáció és Animált Hover */
+h1, h2, h3, h4 { letter-spacing: -.01em; }
+.text-accent { color: var(--tt-green-300) !important; }   /* világos zöld sötét háttéren */
+.text-gold   { color: var(--tt-gold) !important; }
+.max-w-700   { max-width: 700px; }
+.max-w-900   { max-width: 900px; }
+
+.skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 2000;
+    background: var(--tt-gold); color: var(--tt-green-900);
+    padding: 10px 16px; border-radius: 8px; font-weight: 700; text-decoration: none;
+    transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
+:focus-visible { outline: 3px solid var(--tt-gold-dark); outline-offset: 2px; }
+
+/* 3. Navigáció ------------------------------------------------------------ */
 .navbar-titan {
-    background-color: var(--swamp-green) !important;
-    border-bottom: 3px solid var(--accent-green);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    background: var(--tt-green-800);
+    border-bottom: 3px solid var(--tt-green-600);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
 }
-
+.navbar-titan .navbar-brand {
+    color: #fff; font-weight: 800; letter-spacing: .04em; font-size: 1.05rem;
+}
+.navbar-titan .brand-logo {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .85); background: #fff;
+}
 .navbar-titan .nav-link {
-    color: var(--pure-white) !important;
-    font-weight: 600;
-    padding: 8px 16px !important;
-    border-radius: 6px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: rgba(255, 255, 255, .88);
+    font-weight: 600; font-size: .95rem;
+    padding: .5rem .8rem; border-radius: 8px;
+    transition: background-color .2s, color .2s;
 }
-
-.navbar-titan .nav-link:hover, 
-.navbar-titan .nav-link.active {
-    background-color: var(--hover-grey);
-    color: var(--gold-accent) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
+.navbar-titan .nav-link:hover { background: rgba(255, 255, 255, .09); color: #fff; }
+.navbar-titan .nav-link.active { color: var(--tt-gold); background: rgba(233, 196, 106, .12); }
 
 .btn-cart-nav {
-    background-color: var(--accent-green);
-    color: white;
-    border: 1px solid var(--gold-accent);
-    font-weight: 600;
-    transition: all 0.3s ease;
+    position: relative;
+    background: var(--tt-gold); color: var(--tt-green-900);
+    font-weight: 700; border: 0; border-radius: 10px;
 }
+.btn-cart-nav:hover, .btn-cart-nav:focus-visible { background: #f3d58a; color: var(--tt-green-900); }
+.btn-cart-nav .badge { font-size: .68rem; }
+.cart-bump { animation: cartBump .35s ease; }
+@keyframes cartBump { 40% { transform: scale(1.18); } }
 
-.btn-cart-nav:hover {
-    background-color: var(--gold-accent);
-    color: var(--swamp-green);
-    transform: scale(1.05);
-}
-
-/* Gombok és Interaktivitás */
+/* 4. Gombok --------------------------------------------------------------- */
+.btn { font-weight: 600; border-radius: 10px; }
 .btn-titan-primary {
-    background-color: var(--primary-green);
-    color: var(--pure-white);
-    border: 2px solid var(--primary-green);
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: var(--tt-green-700); color: #fff; border: 2px solid var(--tt-green-700);
+    transition: background-color .2s, border-color .2s, transform .15s;
 }
-
-.btn-titan-primary:hover {
-    background-color: var(--swamp-green);
-    color: var(--pure-white);
-    border-color: var(--swamp-green);
-    transform: scale(1.03);
+.btn-titan-primary:hover, .btn-titan-primary:focus-visible {
+    background: var(--tt-green-800); border-color: var(--tt-green-800); color: #fff;
 }
-
+.btn-titan-primary:active { transform: translateY(1px); }
 .btn-titan-outline {
-    background-color: transparent;
-    color: var(--primary-green);
-    border: 2px solid var(--primary-green);
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: transparent; color: var(--tt-green-700); border: 2px solid var(--tt-green-700);
+    transition: background-color .2s, color .2s;
 }
-
-.btn-titan-outline:hover {
-    background-color: var(--accent-green);
-    color: var(--pure-white);
-    transform: scale(1.03);
+.btn-titan-outline:hover, .btn-titan-outline:focus-visible { background: var(--tt-green-700); color: #fff; }
+.btn-titan-gold {
+    background: var(--tt-gold); color: var(--tt-green-900); border: 2px solid var(--tt-gold);
 }
-
-/* Kártya Hover Animációk */
-.titan-card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-    background: white;
+.btn-titan-gold:hover { background: #f3d58a; border-color: #f3d58a; color: var(--tt-green-900); }
+.btn-titan-ghost-light {
+    background: rgba(255, 255, 255, .08); color: #fff; border: 2px solid rgba(255, 255, 255, .7);
 }
+.btn-titan-ghost-light:hover { background: #fff; color: var(--tt-green-800); }
 
-.titan-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(20, 40, 26, 0.18);
-}
-
-.transition-zoom {
-    transition: transform 0.4s ease;
-}
-
-.titan-card:hover .transition-zoom {
-    transform: scale(1.04);
-}
-
-/* Hero Section */
+/* 5. Hero + oldalfejlécek -------------------------------------------------- */
 .hero-header {
-    background: linear-gradient(135deg, rgba(20, 40, 26, 0.88) 0%, rgba(30, 77, 43, 0.88) 100%), url('../img/terko_titanok_hero.png') center/cover no-repeat;
-    color: white;
-    padding: 75px 0;
-    border-bottom: 4px solid var(--accent-green);
+    position: relative; color: #fff; text-align: center;
+    padding: clamp(56px, 9vw, 110px) 0 0;
+    background-color: var(--tt-green-800);
+    background-image: linear-gradient(160deg, rgba(13, 28, 18, .90) 0%, rgba(30, 77, 43, .82) 100%), url("../img/hero.jpg");
+    background-image: linear-gradient(160deg, rgba(13, 28, 18, .90) 0%, rgba(30, 77, 43, .82) 100%),
+        image-set(url("../img/hero.webp") type("image/webp"), url("../img/hero.jpg") type("image/jpeg"));
+    background-size: cover; background-position: center;
+    border-bottom: 4px solid var(--tt-green-600);
+}
+.hero-logo {
+    width: clamp(96px, 16vw, 140px); height: auto; border-radius: 50%;
+    border: 4px solid #fff; background: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+}
+.hero-header h1 { font-weight: 800; letter-spacing: .02em; text-wrap: balance; }
+.hero-header .lead { max-width: 640px; margin-inline: auto; color: rgba(255, 255, 255, .88); text-wrap: balance; }
+
+.hero-stats {
+    margin-top: clamp(36px, 6vw, 64px);
+    background: rgba(13, 28, 18, .72); backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255, 255, 255, .15);
+}
+.hero-stat { padding: 18px 8px; }
+.hero-stat .num { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: var(--tt-gold); line-height: 1.1; }
+.hero-stat .lbl { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255, 255, 255, .75); }
+
+.page-head {
+    background: linear-gradient(135deg, var(--tt-green-800), var(--tt-green-700));
+    color: #fff; padding: clamp(32px, 5vw, 56px) 0;
+    border-bottom: 4px solid var(--tt-green-600);
+}
+.page-head h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 .35rem; }
+.page-head p { margin: 0; color: rgba(255, 255, 255, .82); max-width: 720px; }
+.page-head .eyebrow { color: var(--tt-gold); }
+
+.eyebrow {
+    display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--tt-green-600); margin-bottom: .35rem;
 }
 
-.max-w-700 {
-    max-width: 700px;
+/* 6. Kártyák, szekciók ----------------------------------------------------- */
+.section { padding: clamp(40px, 6vw, 72px) 0; }
+.section-title { font-weight: 800; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 1.25rem; }
+
+.titan-card {
+    background: #fff; border: 1px solid var(--tt-line);
+    border-radius: var(--tt-radius); box-shadow: var(--tt-shadow-sm);
+    transition: transform .25s ease, box-shadow .25s ease;
 }
+.titan-card.hoverable:hover { transform: translateY(-4px); box-shadow: var(--tt-shadow-md); }
+
+.icon-badge {
+    width: 48px; height: 48px; border-radius: 12px; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(30, 77, 43, .1); color: var(--tt-green-700); font-size: 1.4rem;
+}
+
+.player-card { text-align: center; padding: 1.5rem 1rem; }
+.player-number {
+    font-size: 2.6rem; font-weight: 800; line-height: 1; color: var(--tt-green-700);
+}
+.player-card .role { font-size: .85rem; color: var(--tt-muted); }
+
+.sponsor-box {
+    border: 1px dashed #c3d0c5; border-radius: 12px; background: #fafcfa; padding: 1.5rem; height: 100%;
+}
+
+.callout {
+    background: #f6faf6; border-left: 5px solid var(--tt-green-600);
+    border-radius: 0 12px 12px 0; padding: 1rem 1.25rem;
+}
+
+/* 7. Pálya + idővonal ------------------------------------------------------- */
+.pitch {
+    position: relative; width: 100%; max-width: 440px; margin-inline: auto; aspect-ratio: 2 / 3;
+    border-radius: 14px; overflow: hidden; border: 4px solid #fff; box-shadow: var(--tt-shadow-md);
+    background:
+        repeating-linear-gradient(0deg, #2f7a4a 0 11.1%, #2a7044 11.1% 22.2%);
+}
+.pitch::before, .pitch::after { content: ""; position: absolute; pointer-events: none; }
+/* középvonal + kör */
+.pitch::before {
+    left: 0; right: 0; top: 50%; height: 2px; background: rgba(255, 255, 255, .7);
+    box-shadow: 0 0 0 0 transparent;
+}
+.pitch::after {
+    left: 50%; top: 50%; width: 22%; aspect-ratio: 1; transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, .7); border-radius: 50%;
+}
+.pitch-box { position: absolute; left: 25%; right: 25%; height: 15%; border: 2px solid rgba(255, 255, 255, .7); }
+.pitch-box.top { top: -2px; border-top: 0; }
+.pitch-box.bottom { bottom: -2px; border-bottom: 0; }
+.pitch-arrow {
+    position: absolute; left: 50%; top: 4%; transform: translateX(-50%);
+    font-size: .68rem; letter-spacing: .15em; font-weight: 700; color: rgba(255, 255, 255, .8);
+}
+.pl {
+    position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%);
+    transform: translate(-50%, -50%); text-align: center; width: 22%;
+}
+.pl-dot {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: clamp(28px, 8.5vw, 38px); height: clamp(28px, 8.5vw, 38px); border-radius: 50%;
+    background: #fff; color: var(--tt-green-800); font-weight: 800; font-size: clamp(.72rem, 2.4vw, .9rem);
+    border: 3px solid var(--tt-green-800); box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+.pl.gk .pl-dot { background: var(--tt-gold); }
+.pl.star .pl-dot { background: var(--tt-gold); border-color: #fff; outline: 2px solid var(--tt-gold-dark); }
+.pl-name {
+    display: block; margin-top: 2px; color: #fff; font-weight: 700; font-size: clamp(.58rem, 2vw, .72rem);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .7); white-space: nowrap;
+}
+
+.scoreboard {
+    background: linear-gradient(135deg, var(--tt-green-900), var(--tt-green-800));
+    color: #fff; border-radius: 20px; border: 3px solid var(--tt-green-600);
+    box-shadow: var(--tt-shadow-md);
+}
+.scoreboard .score { font-size: clamp(2.8rem, 8vw, 4.5rem); font-weight: 800; color: var(--tt-gold); line-height: 1; font-variant-numeric: tabular-nums; }
+.live-dot {
+    display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ff4d4d;
+    margin-right: 6px; animation: livePulse 1.4s infinite;
+}
+@keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, .7); } 70% { box-shadow: 0 0 0 9px rgba(255, 77, 77, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); } }
+.match-progress { height: 8px; background: rgba(255, 255, 255, .15); border-radius: 99px; }
+.match-progress .progress-bar { background: var(--tt-gold); transition: width .6s ease; }
+
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 27px; top: 8px; bottom: 8px; width: 2px; background: var(--tt-line); }
+.timeline li { position: relative; display: flex; gap: 16px; padding: 12px 0; }
+.timeline .minute {
+    flex: none; width: 56px; height: 32px; border-radius: 99px; z-index: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--tt-green-800); color: #fff; font-weight: 700; font-size: .85rem;
+}
+.timeline .minute.goal { background: var(--tt-gold); color: var(--tt-green-900); }
+.timeline .minute.card { background: #f4d03f; color: #222; }
+.timeline .minute.conceded { background: #b23a3a; }
+
+/* 8. Merch Shop ------------------------------------------------------------- */
+.shop-toolbar {
+    background: #fff; border: 1px solid var(--tt-line); border-radius: var(--tt-radius);
+    padding: 1rem; box-shadow: var(--tt-shadow-sm);
+}
+.filter-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+.filter-pill {
+    border: 2px solid var(--tt-line); background: #fff; color: var(--tt-ink);
+    border-radius: 99px; padding: .3rem .95rem; font-weight: 600; font-size: .9rem;
+    transition: all .2s;
+}
+.filter-pill:hover { border-color: var(--tt-green-600); }
+.filter-pill[aria-pressed="true"] { background: var(--tt-green-700); border-color: var(--tt-green-700); color: #fff; }
+.filter-pill .n { opacity: .65; font-weight: 500; margin-left: .25rem; }
+
+.product-card { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+.product-media {
+    position: relative; display: block; aspect-ratio: 1 / 1; background: #fff;
+    border-bottom: 1px solid var(--tt-line); overflow: hidden;
+}
+.product-media img {
+    width: 100%; height: 100%; object-fit: contain; padding: 10px; transition: transform .4s ease;
+}
+.product-card:hover .product-media img { transform: scale(1.06); }
+.product-model {
+    position: absolute; left: 8px; top: 8px; max-width: calc(100% - 16px);
+    background: var(--tt-green-800); color: var(--tt-gold); font-size: .68rem; font-weight: 700;
+    padding: .25rem .55rem; border-radius: 99px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.product-body { display: flex; flex-direction: column; flex: 1; padding: .9rem; gap: .25rem; }
+.product-cat { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--tt-muted); font-weight: 700; }
+.product-title { font-size: .98rem; font-weight: 700; line-height: 1.25; margin: 0; }
+.product-title a { color: var(--tt-ink); text-decoration: none; }
+.product-title a:hover { color: var(--tt-green-600); }
+.product-sub { font-size: .8rem; color: var(--tt-muted); margin: 0 0 .4rem; }
+.product-foot { margin-top: auto; display: grid; gap: .6rem; }
+.product-price { font-size: 1.15rem; font-weight: 800; color: var(--tt-green-700); white-space: nowrap; }
+
+.detail-media {
+    background: #fff; border: 1px solid var(--tt-line); border-radius: var(--tt-radius);
+    position: relative; padding: 1.5rem; text-align: center;
+}
+.detail-media img { max-height: 440px; width: 100%; object-fit: contain; }
+.detail-price { font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 800; color: var(--tt-green-700); }
+.trust-item { background: #fff; border: 1px solid var(--tt-line); border-radius: 12px; padding: .75rem; text-align: center; font-size: .82rem; height: 100%; }
+.trust-item i { font-size: 1.6rem; color: var(--tt-green-700); display: block; }
+
+.qty-stepper { display: inline-flex; align-items: center; border: 1px solid #c8d3ca; border-radius: 10px; overflow: hidden; background: #fff; }
+.qty-stepper button { border: 0; background: #f1f5f1; width: 36px; height: 38px; font-size: 1.1rem; font-weight: 700; line-height: 1; }
+.qty-stepper button:hover { background: #e3ebe4; }
+.qty-stepper input, .qty-stepper .qty-val { width: 46px; text-align: center; border: 0; font-weight: 700; background: #fff; -moz-appearance: textfield; }
+.qty-stepper input::-webkit-outer-spin-button, .qty-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.qty-stepper .qty-val { display: inline-block; line-height: 38px; }
+
+/* 9. Kosár ------------------------------------------------------------------- */
+.cart-modal .modal-header { background: var(--tt-green-800); color: #fff; border-bottom: 3px solid var(--tt-gold); }
+.cart-lines { list-style: none; margin: 0; padding: 0; }
+.cart-line {
+    display: grid; grid-template-columns: 56px 1fr auto; gap: .5rem .9rem; align-items: center;
+    padding: .85rem 0; border-bottom: 1px solid var(--tt-line);
+}
+.cart-thumb { width: 56px; height: 56px; object-fit: contain; border: 1px solid var(--tt-line); border-radius: 10px; background: #fff; }
+.cart-line-info a { font-weight: 700; color: var(--tt-ink); text-decoration: none; }
+.cart-line-info a:hover { color: var(--tt-green-600); }
+.cart-line-side { display: flex; flex-direction: column; align-items: flex-end; gap: .35rem; }
+.cart-line-total { font-weight: 800; white-space: nowrap; }
+.cart-total { font-size: 1.4rem; font-weight: 800; color: var(--tt-green-700); }
+
+.toast-container { z-index: 2100; }
+.toast-titan { border: 0; border-left: 5px solid var(--tt-gold); border-radius: 12px; box-shadow: var(--tt-shadow-md); }
+
+/* 10. Űrlapok ----------------------------------------------------------------- */
+.form-label { font-weight: 600; }
+.form-control, .form-select { border-radius: 10px; border-color: #c8d3ca; padding: .6rem .85rem; }
+.form-control:focus, .form-select:focus { border-color: var(--tt-green-600); box-shadow: 0 0 0 .25rem rgba(45, 106, 79, .2); }
+.form-hint { font-size: .8rem; color: var(--tt-muted); }
+.contact-item { display: flex; gap: .9rem; margin-bottom: 1.4rem; }
+.contact-item h2 { font-size: .95rem; font-weight: 700; margin: 0 0 .15rem; }
+.contact-item p, .contact-item a { margin: 0; color: var(--tt-muted); text-decoration: none; }
+.contact-item a:hover { color: var(--tt-green-700); text-decoration: underline; }
+
+/* 11. Lábléc ------------------------------------------------------------------- */
+.site-footer {
+    background: var(--tt-green-900); color: rgba(255, 255, 255, .82);
+    border-top: 4px solid var(--tt-green-600); margin-top: auto;
+}
+.site-footer h2 { font-size: 1rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .08em; }
+.site-footer a { color: rgba(255, 255, 255, .82); text-decoration: none; }
+.site-footer a:hover { color: var(--tt-gold); }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin-bottom: .4rem; }
+.social-link {
+    width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, .1); font-size: 1.1rem; transition: background-color .2s, transform .2s;
+}
+.social-link:hover { background: var(--tt-gold); color: var(--tt-green-900) !important; transform: translateY(-2px); }
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, .12); font-size: .85rem; color: rgba(255, 255, 255, .6); }
+
+/* 12. Reszponzív + mozgáscsökkentés ----------------------------------------------- */
+@media (max-width: 575.98px) {
+    .cart-line { grid-template-columns: 48px 1fr; }
+    .cart-thumb { width: 48px; height: 48px; }
+    .cart-line-side { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
+    .product-body { padding: .7rem; }
+    .product-title { font-size: .9rem; }
+    .toast-container { left: 0; right: 0; }
+    .toast-container .toast { margin-inline: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Keskeny kártyákon az ár és a "Részletek" link ne ütközzön */
+.product-foot > div:first-child { flex-wrap: wrap; gap: .1rem .5rem; }

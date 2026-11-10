@@ -2,178 +2,105 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eredmények & Keret - Térkő Titánok FC</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Keret & Taktika - Térkő Titánok FC</title>
+    <meta name="description" content="A Térkő Titánok FC 18 fős kerete, a kezdő tizenegy és a 4-3-3-as hamis kilences taktikai felállás.">
+    <meta name="theme-color" content="#14281a">
+    <meta property="og:title" content="Keret & Taktika - Térkő Titánok FC">
+    <meta property="og:description" content="A Térkő Titánok FC 18 fős kerete, a kezdő tizenegy és a 4-3-3-as hamis kilences taktikai felállás.">
+    <meta property="og:image" content="img/logo.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    
-    <!-- Navigáció -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-titan sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-                <img src="img/terko_titanok_logo.png" alt="Térkő Titánok FC Címer" width="42" height="42" class="me-2 rounded-circle border border-white">
-                TÉRKŐ TITÁNOK FC
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigáció váltó">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    
-                    <li class="nav-item"><a class="nav-link " href="index.html"><i class="bi bi-house-door me-1"></i>Főoldal</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="eredmenyek.html"><i class="bi bi-trophy me-1"></i>Eredmények & Keret</a></li>
-                    <li class="nav-item"><a class="nav-link " href="meccs-kovetes.html"><i class="bi bi-broadcast me-1"></i>Élő Meccskövetés</a></li>
-                    <li class="nav-item"><a class="nav-link " href="merch.html"><i class="bi bi-shop me-1"></i>Merch Shop (27)</a></li>
-                    <li class="nav-item"><a class="nav-link " href="jelentkezes.html"><i class="bi bi-person-plus me-1"></i>Toborzás</a></li>
-                    <li class="nav-item"><a class="nav-link " href="kapcsolat.html"><i class="bi bi-envelope me-1"></i>Kapcsolat</a></li>
-                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-                        <button class="btn btn-cart-nav btn-sm px-3 py-2 position-relative" data-bs-toggle="modal" data-bs-target="#cartModal" title="Kosár megtekintése">
-                            <i class="bi bi-cart-fill me-1"></i> Kosár
-                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
-                        </button>
-                    </li>
-                </ul>
+<body data-page="squad">
+    <a class="skip-link" href="#main">Ugrás a tartalomra</a>
+
+    <!-- A menüt a js/core.js tölti be (NAV_ITEMS) -->
+    <div id="site-header"></div>
+
+    <main id="main">
+        <header class="page-head">
+            <div class="container">
+                <span class="eyebrow">Keret</span>
+                <h1>Felnőtt játékoskeret &amp; taktikai beosztás</h1>
+                <p>A Térkő Titánok FC 18 fős kerete és a 4-3-3-as hamis kilences felállás.</p>
             </div>
-        </div>
-    </nav>
+        </header>
 
-
-    <div class="container py-5">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold text-success mb-2"><i class="bi bi-trophy me-2"></i>Felnőtt Játékoskeret & Taktikai Beosztás</h2>
-            <p class="lead text-muted">A Térkő Titánok FC 18 fős kerete és a 4-3-3-as Hamis 9-es felállás</p>
-        </div>
-
-        <!-- Kezdő 11 Táblázat -->
-        <div class="card titan-card p-4 mb-5 shadow-sm">
-            <h4 class="fw-bold text-dark border-bottom pb-2 mb-3"><i class="bi bi-star-fill text-warning me-2"></i>Kezdő Tizenegy (4-3-3 Hamis 9-es)</h4>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Mezszám</th>
-                            <th>Név</th>
-                            <th>Poszt</th>
-                            <th>Státusz / Szerep</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>#01</td><td><strong>Szabó Ádám</strong></td><td>Kapus (GK)</td><td><span class="badge bg-success">Kezdő Kapus</span></td></tr>
-                        <tr><td>#04</td><td><strong>Völgyi Richárd</strong></td><td>Jobbhátvéd (RB)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#23</td><td><strong>Ifj. Horváth Zsolt Zoltán</strong></td><td>Balhátvéd (LB)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#54</td><td><strong>Babay Krisztofer</strong></td><td>Belső Védő (CB)</td><td><span class="badge bg-warning text-dark">Csapatkapitány</span></td></tr>
-                        <tr><td>#31</td><td><strong>Kandács Romano</strong></td><td>Belső Védő (CB)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#44</td><td><strong>Hamburger István</strong></td><td>Védekező Középpályás (CDM)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#19</td><td><strong>Kalányos Róbert</strong></td><td>Középpályás (CM)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#87</td><td><strong>Bordás Zorall Dzsézön</strong></td><td>Középpályás (CM)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#99</td><td><strong>Ambubu Butan Kumalu</strong></td><td>Jobbszélső (RW)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr><td>#07</td><td><strong>Török Kevin</strong></td><td>Balszélső (LW)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
-                        <tr class="table-warning"><td>#10</td><td><strong>Bugdán Brájen</strong></td><td>Hamis Kilences (F9)</td><td><span class="badge bg-danger">Ballon d'Or Jelölt</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Cseresor -->
-        <div class="card titan-card p-4 shadow-sm">
-            <h4 class="fw-bold text-dark border-bottom pb-2 mb-3"><i class="bi bi-people-fill me-2"></i>Cserepad & Kerettagok</h4>
-            <div class="row g-3">
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#03</strong> Junior Krisztián Krisztopher</div></div>
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#08</strong> Rostás Aladin Dániel</div></div>
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#11</strong> Sárközi Nicolaus</div></div>
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#12</strong> Kalányos Márkinhos</div></div>
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#22</strong> Somogyi Patrik</div></div>
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#45</strong> JohnDeer Julio Emánuel</div></div>
-                <div class="col-md-4"><div class="p-3 border rounded bg-light"><strong>#76</strong> Dandár Ferenc Robika</div></div>
-            </div>
-        </div>
-    </div>
-
-    
-    <!-- Lábléc -->
-    <footer class="bg-dark text-white py-5 mt-5 border-top border-4 border-success">
-        <div class="container text-center">
-            <div class="row g-4 justify-content-center align-items-center">
-                <!-- Bal oldali mező (col-md-6) -->
-                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
-                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-shield-shield me-2"></i>TÉRKŐ TITÁNOK FC</h5>
-                    <p class="small text-light mb-1">Alapítva: 2026 | Otthonunk: Hajdúböszörmény (Titans Aréna - Táltos utca)</p>
-                    <p class="small text-muted fst-italic mb-0">"Fiatal pulyaktól az öreg ráklokig várjuk a footballozni szerető igazi gadzsókat!"</p>
-                </div>
-                
-                <!-- Jobb oldali mező (col-md-6) -->
-                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
-                    <h5 class="fw-bold text-success mb-2"><i class="bi bi-star-fill me-2"></i>Hivatalos Támogatóink</h5>
-                    <p class="small text-light mb-2"><strong>DENSO</strong> & <strong>Gino & Lorenzo Barbershop</strong></p>
-                    <div class="d-flex justify-content-center gap-3 fs-5">
-                        <a href="#" class="text-white text-decoration-none" title="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white text-decoration-none" title="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white text-decoration-none" title="YouTube"><i class="bi bi-youtube"></i></a>
-                        <a href="#" class="text-white text-decoration-none" title="TikTok"><i class="bi bi-tiktok"></i></a>
+        <div class="container py-5">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-5">
+                    <div class="titan-card p-3 p-md-4 h-100">
+                        <h2 class="h5 fw-bold mb-3"><i class="bi bi-diagram-3-fill text-success me-2" aria-hidden="true"></i>Taktikai tábla (4-3-3)</h2>
+                        <div class="pitch" role="img" aria-label="Taktikai tábla: kapus, négy védő, három középpályás, egy hamis kilences és két szélső">
+                            <div class="pitch-box top"></div><div class="pitch-box bottom"></div>
+                            <span class="pitch-arrow">TÁMADÁS ▲</span>
+                            <div class="pl gk" style="--x:50;--y:91"><span class="pl-dot">1</span><span class="pl-name">Szabó</span></div>
+                            <div class="pl " style="--x:14;--y:74"><span class="pl-dot">23</span><span class="pl-name">Horváth</span></div>
+                            <div class="pl " style="--x:38;--y:76"><span class="pl-dot">31</span><span class="pl-name">Kandács</span></div>
+                            <div class="pl " style="--x:62;--y:76"><span class="pl-dot">54</span><span class="pl-name">Babay (C)</span></div>
+                            <div class="pl " style="--x:86;--y:74"><span class="pl-dot">4</span><span class="pl-name">Völgyi</span></div>
+                            <div class="pl " style="--x:50;--y:58"><span class="pl-dot">44</span><span class="pl-name">Hamburger</span></div>
+                            <div class="pl " style="--x:27;--y:46"><span class="pl-dot">19</span><span class="pl-name">Kalányos</span></div>
+                            <div class="pl " style="--x:73;--y:46"><span class="pl-dot">87</span><span class="pl-name">Bordás</span></div>
+                            <div class="pl star" style="--x:50;--y:30"><span class="pl-dot">10</span><span class="pl-name">Bugdán</span></div>
+                            <div class="pl " style="--x:17;--y:18"><span class="pl-dot">7</span><span class="pl-name">Török</span></div>
+                            <div class="pl " style="--x:83;--y:18"><span class="pl-dot">99</span><span class="pl-name">Kumalu</span></div>
+                        </div>
+                        <p class="small text-muted mt-3 mb-0"><i class="bi bi-info-circle me-1" aria-hidden="true"></i>Az arany jelzés a hamis kilencest (#10) és a kapust (#1) mutatja. A (C) a csapatkapitány.</p>
                     </div>
                 </div>
-
-                <!-- Alsó sáv (col-md-12) -->
-                <div class="col-md-12 text-center border-top border-secondary pt-3 mt-3">
-                    <p class="small text-muted mb-0">&copy; 2026 Térkő Titánok FC. Minden jog fenntartva. | HTML5 & Bootstrap 5.3 Keretrendszer</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Kosár Modal -->
-    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-white border-bottom border-success border-3">
-                    <h5 class="modal-title fw-bold" id="cartModalLabel">
-                        <i class="bi bi-cart-check-fill text-success me-2"></i>Kosarad Tartalma
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Bezárás"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div id="cart-empty-message" class="text-center py-4">
-                        <i class="bi bi-cart-x display-1 text-muted"></i>
-                        <p class="lead mt-3 text-muted">A kosarad jelenleg üres.</p>
-                        <a href="merch.html" class="btn btn-titan-primary mt-2" data-bs-dismiss="modal">Irány a Merch Shop!</a>
-                    </div>
-                    <div id="cart-items-container" class="d-none">
+                <div class="col-lg-7">
+                    <div class="titan-card p-3 p-md-4 h-100">
+                        <h2 class="h5 fw-bold mb-3"><i class="bi bi-star-fill text-gold me-2" aria-hidden="true"></i>Kezdő tizenegy</h2>
                         <div class="table-responsive">
-                            <table class="table align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Termék</th>
-                                        <th>Egységár</th>
-                                        <th>Mennyiség</th>
-                                        <th>Összesen</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cart-table-body">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-dark"><tr><th scope="col">Mezszám</th><th scope="col">Név</th><th scope="col">Poszt</th><th scope="col">Szerep</th></tr></thead>
+                                <tbody>
+                                <tr><td class="fw-bold">#01</td><td><strong>Szabó Ádám</strong></td><td>Kapus (GK)</td><td><span class="badge bg-success">Kezdő kapus</span></td></tr>
+                                <tr><td class="fw-bold">#04</td><td><strong>Völgyi Richárd</strong></td><td>Jobbhátvéd (RB)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#23</td><td><strong>Ifj. Horváth Zsolt Zoltán</strong></td><td>Balhátvéd (LB)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#54</td><td><strong>Babay Krisztofer</strong></td><td>Belső védő (CB)</td><td><span class="badge bg-warning text-dark">Csapatkapitány</span></td></tr>
+                                <tr><td class="fw-bold">#31</td><td><strong>Kandács Romano</strong></td><td>Belső védő (CB)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#44</td><td><strong>Hamburger István</strong></td><td>Védekező középpályás (CDM)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#19</td><td><strong>Kalányos Róbert</strong></td><td>Középpályás (CM)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#87</td><td><strong>Bordás Zorall Dzsézön</strong></td><td>Középpályás (CM)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#99</td><td><strong>Ambubu Kumalu</strong></td><td>Jobbszélső (RW)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr><td class="fw-bold">#07</td><td><strong>Török Kevin</strong></td><td>Balszélső (LW)</td><td><span class="badge bg-success">Kezdő</span></td></tr>
+                                <tr class="table-warning"><td class="fw-bold">#10</td><td><strong>Bugdán Brájen</strong></td><td>Hamis kilences (F9)</td><td><span class="badge bg-danger">Ballon d'Or jelölt</span></td></tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
-                            <h5 class="fw-bold mb-0">Végösszeg: <span id="cart-total-price" class="text-success fw-extrabold">0 Ft</span></h5>
-                            <div>
-                                <button onclick="clearCart()" class="btn btn-outline-danger me-2"><i class="bi bi-trash me-1"></i>Kosár Ürítése</button>
-                                <button onclick="checkoutCart()" class="btn btn-titan-primary"><i class="bi bi-credit-card me-1"></i>Megrendelés</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="titan-card p-3 p-md-4">
+                <h2 class="h5 fw-bold mb-3"><i class="bi bi-people-fill text-success me-2" aria-hidden="true"></i>Cserepad &amp; kerettagok</h2>
+                <div class="row g-3">
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#03</span><span>Junior Krisztián Krisztopher</span></div></div>
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#08</span><span>Rostás Aladin Dániel</span></div></div>
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#11</span><span>Sárközi Nicolaus</span></div></div>
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#12</span><span>Kalányos Márkinhos</span></div></div>
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#22</span><span>Somogyi Patrik</span></div></div>
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#45</span><span>JohnDeer Julio Emánuel</span></div></div>
+                    <div class="col-sm-6 col-lg-4"><div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light"><span class="fw-bold fs-5 text-success">#76</span><span>Dandár Ferenc Robika</span></div></div>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- A láblécet és a kosár-ablakot a js/core.js tölti be -->
+    <div id="site-footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <noscript><p class="text-center p-3 mb-0 bg-warning-subtle">A menü, a kosár és a webshop működéséhez engedélyezd a JavaScriptet.</p></noscript>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

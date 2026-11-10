@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Termék részletei - Térkő Titánok FC Merch</title>
+    <meta name="description" content="Termék részletei a Térkő Titánok FC hivatalos merch shopjában.">
+    <meta name="theme-color" content="#14281a">
+    <meta property="og:title" content="Termék részletei - Térkő Titánok FC Merch">
+    <meta property="og:description" content="Termék részletei a Térkő Titánok FC hivatalos merch shopjában.">
+    <meta property="og:image" content="img/logo.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="shop">
+    <a class="skip-link" href="#main">Ugrás a tartalomra</a>
+
+    <!-- A menüt a js/core.js tölti be (NAV_ITEMS) -->
+    <div id="site-header"></div>
+
+    <main id="main">
+        <div class="container py-4">
+            <nav aria-label="Morzsamenü" class="mb-4">
+                <ol class="breadcrumb mb-0 bg-white py-2 px-3 rounded-3 border">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Főoldal</a></li>
+                    <li class="breadcrumb-item"><a href="merch.html" class="text-decoration-none">Merch Shop</a></li>
+                    <li class="breadcrumb-item active fw-semibold" id="product-breadcrumb-title" aria-current="page">Betöltés…</li>
+                </ol>
+            </nav>
+
+            <div class="titan-card p-3 p-md-4 p-lg-5 mb-5" id="product-detail">
+                <div class="text-center py-5 text-muted">Termék betöltése…</div>
+            </div>
+
+            <section aria-labelledby="rec-title">
+                <h2 class="section-title border-bottom pb-2" id="rec-title"><i class="bi bi-stars text-gold me-2" aria-hidden="true"></i>További ajánlott termékeink</h2>
+                <div class="row g-3 g-lg-4" id="recommended-products-row"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- A láblécet és a kosár-ablakot a js/core.js tölti be -->
+    <div id="site-footer"></div>
+
+    <noscript><p class="text-center p-3 mb-0 bg-warning-subtle">A menü, a kosár és a webshop működéséhez engedélyezd a JavaScriptet.</p></noscript>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
